@@ -1,0 +1,17 @@
+{
+  "name": "pt-full",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd pt-client && PORT=10000 npm start",
+    "server": "cd pt-server && node server.js",
+    "build": "cd pt-client && npm run build",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
