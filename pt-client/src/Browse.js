@@ -88,7 +88,7 @@ const Browse = ({ currUser, categories, setCategories, updateFavorite }) => {
         const getAssets = async () => {
             if (categories === undefined) {
                 const cats = await CryptoAPI.getCats()
-                const filtered = cats.categories.data.filter(cat => cat.num_tokens > 0 && cat.market_cap > 0)
+                const filtered = cats.categories.data.filter(cat => cat.num_tokens > 0 && cat.market_cap > 0) 
                 setCategories(SortingClass.sortCats(filtered, 'name', 'ascending'))
             }
 

@@ -65,7 +65,7 @@ const CategoryTable = ({ categories, sortBy, sortDirection, sortCats }) => {
                 </tbody>
             </Table>
         ) : (
-            <div classname='mx-5'>
+            <div className='mx-5'>
                 <LoadingIcon />
             </div>
         )
