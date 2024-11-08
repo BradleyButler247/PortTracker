@@ -1,0 +1,21 @@
+#crop-btn {
+    background-color: #2A2640;
+}
+#crop-btn:hover {
+    background-color: #f29544;
+}
+
+#new-btn {
+    background-color: #734656;
+}
+
+#new-btn:hover {
+    background-color: #f29544;
+}
+
+#cancel-btn {
+    background-color: #A64E46;
+}
+#cancel-btn:hover {
+    background-color: #f29544;
+}
