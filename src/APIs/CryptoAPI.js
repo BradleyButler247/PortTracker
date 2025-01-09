@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:6969";
 
 class CryptoAPI {
     static async request(endpoint, data = {}, method = "get") {

@@ -13,7 +13,7 @@ import TradeList from '../components/TradeList'
 const ProfileTradesTab = ({ addTrade, tradesList }) => {
 
     const [currentActiveTab, setCurrentActiveTab] = useState('1'); 
-    const toggleTabs = (tab) => {if (currentActiveTab !== tab) setCurrentActiveTab(tab)}; 
+    const toggleTabs = (tab) => { if (currentActiveTab !== tab) setCurrentActiveTab(tab) }; 
 
     return (
         <>
@@ -23,7 +23,7 @@ const ProfileTradesTab = ({ addTrade, tradesList }) => {
                         <NavLink className={`border-bottom ${classnames({ active: currentActiveTab === '1' })}`} 
                                  onClick={() => {toggleTabs('1')}}
                                  style={{  
-                                    backgroundColor: currentActiveTab === '1' ? '#14A44D' : '#212122', 
+                                    backgroundColor: currentActiveTab === '1' ? '#018749' : '#2A2640', 
                                     color: '#FBF8E6' 
                                  }}
                         > 
@@ -34,7 +34,7 @@ const ProfileTradesTab = ({ addTrade, tradesList }) => {
                         <NavLink className={`border-bottom ${classnames({ active: currentActiveTab === '2' })}`} 
                                  onClick={() => {toggleTabs('2')}} 
                                  style={{  
-                                    backgroundColor: currentActiveTab === '2' ? '#DC4C64' : '#212122', 
+                                    backgroundColor: currentActiveTab === '2' ? '#A64E46' : '#2A2640', 
                                     color: '#FBF8E6' 
                                  }}
                         >                                     
@@ -42,17 +42,17 @@ const ProfileTradesTab = ({ addTrade, tradesList }) => {
                         </NavLink> 
                     </NavItem>
                 </Nav>
-                <TabContent activeTab={currentActiveTab}> 
-                    <TabPane tabId="1"> 
-                        <ProfileTradesForm orderType={'buy'} addTrade={addTrade} />
+                <TabContent activeTab={ currentActiveTab }> 
+                    <TabPane tabId="1" style={{  }}> 
+                        <ProfileTradesForm orderType={ 'buy' } addTrade={ addTrade } />
                     </TabPane>
                     <TabPane tabId="2"> 
-                        <ProfileTradesForm orderType={'sell'} addTrade={addTrade} />
+                        <ProfileTradesForm orderType={ 'sell' } addTrade={ addTrade } />
                     </TabPane>
                 </TabContent> 
                 <div className='mx-auto'>
                     <h2 className='text-start border-bottom my-4'>Trade History</h2>
-                    <TradeList tradeList={tradesList} />
+                    <TradeList tradeList={ tradesList } />
                 </div>
             </div>
         </> 

@@ -1,18 +1,38 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { Card, 
          CardTitle, 
          CardSubtitle, 
          CardBody, 
          Row,
-         Col
+         Col,
+         TabContent, 
+         TabPane, 
+         Nav, 
+         NavItem, 
+         NavLink
        } from "reactstrap";
-import default_pfp from '../images/default_pfp.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import classNames from 'classnames'; 
+import ProfileFavoritesTab from '../pages/ProfileFavoritesTab'
+import ProfileTradesTab from '../pages/ProfileTradesTab'
+
+
 import '../components/ProfileInfo.css'
 
 
-const ProfileInfo = ({ currUser, toggleForm, userTradeTotal }) => {
+const ProfileInfo = ({ currUser, 
+                       toggleForm, 
+                       userTradeTotal, 
+                       addTrade, 
+                       updateFavorite, 
+                       tradesList 
+                    }) => {
+
+
+    const [currentActiveTab, setCurrentActiveTab] = useState('1'); 
+    const toggleTabs = (tab) => { if (currentActiveTab !== tab) setCurrentActiveTab(tab) }; 
+
 
 
     return (
@@ -20,28 +40,19 @@ const ProfileInfo = ({ currUser, toggleForm, userTradeTotal }) => {
             <CardBody className='text-start py-0 px-0 d-inline'>
                 <Row>
                     <Col xs='auto'>            
-                        <img src={currUser.pfp === '' ? default_pfp : currUser.pfp} 
-                            alt={`${currUser.username} profile picture`}
-                            className='col-2 my-3 mx-2 p-0'
-                            style={{ borderRadius: '50%', height: '12.5rem', width: 'auto' }}
-                        />            
                         <CardTitle className='h1'>
-                            {currUser.username}
+                            { currUser.username }
                         </CardTitle>
                     </Col>
                     <Col xs='auto'>
                         <FontAwesomeIcon 
                             icon={ faEdit } 
-                            onClick={toggleForm}
+                            onClick={ toggleForm }
                             className='edit-btn'
                         />
                     </Col>
                 </Row>
-
-                
-
-
-                {/* {userTradeTotal ? (
+                {userTradeTotal ? (
                     <div className='my-1'>
                         <CardSubtitle className='h3'>
                             Total P&L: 
@@ -52,16 +63,40 @@ const ProfileInfo = ({ currUser, toggleForm, userTradeTotal }) => {
                                 ? `d-inline my-1 ms-2 text-success` 
                                 : `d-inline h4 my-1 ms-2 text-danger`
                         }>
-                            { `$${userTradeTotal.toFixed(2)}` } 
+                            { `$${ userTradeTotal.toFixed(2) }` } 
                         </CardSubtitle>
                     </div>
                 ) : (
                     <CardSubtitle className='my-1 h5'>
                         Total P&L: $0.00
                     </CardSubtitle>
-                )} */}
-
-
+                )}
+                <div className='tabs-container my-4 mx-auto col-12'>
+                    <Nav tabs>
+                        <NavItem className='col-6'>
+                            <NavLink className={ `${ classNames({ active: currentActiveTab === '1' })} profile` } 
+                                     onClick={() => { toggleTabs('1') }}
+                                     style={{ color: '#FBF8E6' }}> 
+                                Trades 
+                            </NavLink> 
+                        </NavItem>
+                        <NavItem className='col-6'>
+                            <NavLink className={ `${ classNames({ active: currentActiveTab === '2' })} profile` } 
+                                     onClick={() => { toggleTabs('2') }} 
+                                     style={{ color: '#FBF8E6' }}>
+                                Favorites 
+                            </NavLink> 
+                        </NavItem>
+                    </Nav>
+                    <TabContent activeTab={ currentActiveTab }> 
+                        <TabPane tabId="1"> 
+                            <ProfileTradesTab addTrade={ addTrade } tradesList={ tradesList } />
+                        </TabPane>
+                        <TabPane tabId="2"> 
+                            <ProfileFavoritesTab currUser={ currUser } updateFavorite={ updateFavorite } />
+                        </TabPane>
+                    </TabContent> 
+                </div>
             </CardBody>
         </Card> 
     )

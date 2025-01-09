@@ -10,7 +10,6 @@ const router = new express.Router();
 const { createToken } = require("../helpers/tokens");
 const userAuthSchema = require("../schemas/userAuth.json");
 const userRegisterSchema = require("../schemas/userRegister.json");
-const userRegisterPFPSchema = require("../schemas/userRegisterPFP.json");
 const { BadRequestError } = require("../expressError");
 
 /** POST /auth/token:  { username, password } => { token }
@@ -27,7 +26,6 @@ router.post("/token", async function (req, res, next) {
       const errs = validator.errors.map(e => e.stack);
       throw new BadRequestError(errs);
     }
-
     const { username, password } = req.body;
     const user = await User.authenticate(username, password);
     const token = createToken(user);
@@ -49,41 +47,20 @@ router.post("/token", async function (req, res, next) {
 
 router.post("/register", async function (req, res, next) {
   try {
-    const validator = jsonschema.validate(req.body, userRegisterSchema);
+    const validator = jsonschema.validate(req.body.userInfo, userRegisterSchema);
     if (!validator.valid) {
       const errs = validator.errors.map(e => e.stack);
       throw new BadRequestError(errs);
     }
-
     const newUser = await User.register({ ...req.body, isAdmin: false });
     const token = createToken(newUser);
-
+    console.log(`routes/auth + ${res.json({ token })}`)
     return res.json({ token });
     
-
   } catch (err) {
     return next(err);
   }
 });
 
-router.post("/pfp", async function (req, res, next) {
-  try {
-    console.log(req.body)
-    // const validator = jsonschema.validate(req.body, userRegisterPFPSchema);
-    // if (!validator.valid) {
-    //   const errs = validator.errors.map(e => e.stack);
-    //   throw new BadRequestError(errs);
-    // }
-
-    // const newUser = await User.register({ ...req.body, isAdmin: false });
-    // const token = createToken(newUser);
-
-    // return res.json({ token });
-    
-
-  } catch (err) {
-    return next(err);
-  }
-});
 
 module.exports = router;

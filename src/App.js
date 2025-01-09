@@ -1,12 +1,10 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import NavBar from './components/NavBar'
 import RoutesList from './RoutesList'
 import PortTrackerAPI from './APIs/PortTrackerAPI'
-import CloudinaryAPI from './APIs/CloudinaryAPI'
 import useLocalStorage from './useLocalStorage'
 import CryptoAPI from './APIs/CryptoAPI'
-
 import 'react-image-crop/dist/ReactCrop.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -39,23 +37,19 @@ function App() {
   const [categories, setCategories] = useState()
   const [favoriteTokens, setFavoriteTokens] = useState()
 
-  const register = async (user, pfpData) => {
+  const register = async (user) => {
     try{
-      console.log(pfpData)
+      await PortTrackerAPI.register(user)
 
-      // await CloudinaryAPI.savePfp(pfpData)
+      const userInfo = await PortTrackerAPI.getUserInfo(user.info.username)
+      setLocalUser(userInfo)
 
-      // await PortTrackerAPI.register({ user, pfpData })
-      // const user = await PortTrackerAPI.getUserInfo(userInfo.user.username)
-
-      // setLocalUser(user)
-
-      // setFlashMsg({
-      //   text: `Welcome ${userInfo.user.username}`,
-      //   type: 'success',
-      //   for: 'profile',
-      //   repeat: flashMsg.repeat === true ? false : true
-      // })
+      setFlashMsg({
+        text: `Welcome ${userInfo.username}`,
+        type: 'success',
+        for: 'profile',
+        repeat: flashMsg.repeat === true ? false : true
+      })
 
     } catch (err) {
       setFlashMsg({
@@ -205,19 +199,19 @@ function App() {
           logout={logout}
         />
         <RoutesList 
-          register={register}
-          login={login}
-          editUser={editUser}
-          currUser={currUser}         
-          flashMsg={flashMsg}
-          setFlashMsg={setFlashMsg}
-          token={token}
-          setToken={setToken}
-          categories={categories}
-          setCategories={setCategories}
-          updateFavorite={updateFavorite}
-          favoriteTokens={favoriteTokens}
-          addTrade={addTrade}
+          register={ register }
+          login={ login }
+          editUser={ editUser }
+          currUser={ currUser }         
+          flashMsg={ flashMsg }
+          setFlashMsg={ setFlashMsg }
+          token={ token }
+          setToken={ setToken }
+          categories={ categories }
+          setCategories={ setCategories }
+          updateFavorite={ updateFavorite }
+          favoriteTokens={ favoriteTokens }
+          addTrade={ addTrade }
         /> 
       </BrowserRouter>
     </div>

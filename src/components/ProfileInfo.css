@@ -7,3 +7,8 @@
     cursor: pointer;
     color: #734656;
 }
+
+.active.profile.nav-link {
+    background-color: #F29544;
+    color: #FBF8E6;
+}

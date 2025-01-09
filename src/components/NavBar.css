@@ -1,4 +1,4 @@
-.navbar {
+.main.navbar {
     background-color: #A64E46;
     padding: 0 !important;
 }
@@ -7,21 +7,11 @@
     padding: 0 !important;
 }
 
-.nav-link {
+.main.nav-link {
     color: #FBF8E6 !important;
     padding: 0.75rem !important;
 }
 
-.nav-link:hover {
+.main.nav-link:hover {
     background-color: #F29544;
-}
-
-#pfp-link {
-    background-color: #A64E46;
-}
-
-.navbar-img {
-    border-radius: '50%' !important;
-    width: '2rem' !important;
-    padding: 0 !important;
 }

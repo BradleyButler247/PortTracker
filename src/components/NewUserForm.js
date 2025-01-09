@@ -1,11 +1,5 @@
 import { React, useState, useRef } from "react";
 import { Row, Form, FloatingLabel, InputGroup, Button } from 'react-bootstrap'
-import default_pfp from '../images/default_pfp.png';
-import ProfilePicModal from './pfp_uploader/PfpModal'
-import ProfilePicCropper from './pfp_uploader/PfpCropper'
-import PfpUploader from '../components/pfp_uploader/PfpUploader'
-
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import './Form.css'
@@ -16,28 +10,11 @@ const NewUserForm = ({ register }) => {
         password: '',
         firstName: '',
         lastName: '',
-        email: '',
-        pfp: ''
+        email: ''
     }
 
     const [formData, setFormData] = useState(initialState);
     const [passwordType, setPasswordType] = useState('password');
-    const [selectedImage, setSelectedImage] = useState(null);
-
-    
-
-
-    const [modal, setModal] = useState(false)
-    const toggleModal = () => setModal(!modal);
-
-    const userPFP = useRef('');
-
-    const updatePFP = (imgSrc) => {
-        userPFP.current = imgSrc;
-    };
-
-
-
 
     const togglePassword = () => {
         passwordType === 'password' 
@@ -63,18 +40,14 @@ const NewUserForm = ({ register }) => {
                 password: formData.password,
                 firstName: formData.firstName,
                 lastName: formData.lastName,
-                email: formData.email,
+                email: formData.email
             }
-        }, {
-            pfp: userPFP.current
-        });
-        setFormData(initialState)
+        })
     }
 
     return (
             <div className='mx-auto'>
                 <div className='display-5 text-start border-bottom mt-3'>Register Here</div>
-                {/* <Form onSubmit={handleSubmit} className='form my-4'> */}
                 <Form onSubmit={handleSubmit} className='form my-4'>
                     <Form.Group>
                     {formData.username === '' ? (
@@ -203,14 +176,6 @@ const NewUserForm = ({ register }) => {
                         </FloatingLabel>
                     )}
                     </Form.Group>
-
-                    <PfpUploader 
-                        toggleModal={ toggleModal }
-                        modal={ modal } 
-                        userPFP={ userPFP } 
-                        updatePFP={ updatePFP } 
-                    />
-
                     <Row>
                         <Form.Group className='mt-3'>
                             <Button 

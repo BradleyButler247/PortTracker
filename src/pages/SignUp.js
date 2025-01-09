@@ -4,21 +4,22 @@ import { Card, CardBody } from "reactstrap";
 import NewUserForm from '../components/NewUserForm'
 import FlashMsg from '../components/FlashMsg'
 
-const NewUser = ({ register, currUser, flashMsg, setFlashMsg }) => {
+
+const SignUp = ({ register, currUser, flashMsg, setFlashMsg }) => {
 
     return (
         currUser.username !== '' ? <Navigate to='/' /> : (
             <>
-                {flashMsg.for === 'registration' ? (
+                { flashMsg.for === 'registration' ? (
                     <div className='mt-5 mx-auto col-10'>
-                        <FlashMsg flashMsg={flashMsg} setFlashMsg={setFlashMsg} />
+                        <FlashMsg flashMsg={ flashMsg } setFlashMsg={ setFlashMsg } />
                     </div>
                 ) : <></>}
                 
-                <div className='d-flex align-items-center justify-content-center'  style={{height:'85vh'}}>
+                <div className='d-flex align-items-center justify-content-center'  style={{ height:'85vh' }}>
                     <Card className='col-10'>
                         <CardBody className='col-8 mx-auto'>
-                            <NewUserForm register={register} />   
+                            <NewUserForm register={ register } />   
                             <Link to='/Login'><small>Already have an account? Login here!</small></Link>
                         </CardBody>
                     </Card>  
@@ -26,6 +27,8 @@ const NewUser = ({ register, currUser, flashMsg, setFlashMsg }) => {
             </>
         )
     )
-}
+};
 
-export default NewUser
+
+
+export default SignUp

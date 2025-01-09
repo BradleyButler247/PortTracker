@@ -16,7 +16,6 @@ const DropdownCat = ({ type, options, catID }) => {
 
     const toggle = () => setDropdownOpen((prevState) => !prevState)
     const loadMore = () => { setPage(page + 10); toggle() }
-
     const clearCat = () => { setSelectedCat(''); navigate(`/Crypto/Browse`) }
 
     useEffect(() => {
@@ -24,9 +23,9 @@ const DropdownCat = ({ type, options, catID }) => {
     }, [options, catID])
 
     return (
-        <Dropdown isOpen={dropdownOpen} toggle={toggle} direction='down' className='d-flex'>
+        <Dropdown isOpen={ dropdownOpen } toggle={ toggle } direction='down' className='d-flex mx-2'>
 
-            <DropdownToggle caret color='info' className='col-3'>
+            <DropdownToggle caret  style={{ backgroundColor: '#A64E46' }}>
                 {!selectedCat ? type : selectedCat.title}
             </DropdownToggle>
             <DropdownMenu dark className='pb-0'>

@@ -6,8 +6,8 @@ import './LoadingIcon.css';
 
 const LoadingIcon = () => {
     return (
-        <div>
-            <FontAwesomeIcon className='icon' icon={faCircleNotch} /> 
+        <div className='text-center'>
+            <FontAwesomeIcon className='icon' icon={ faCircleNotch } /> 
         </div>
     )
 }

@@ -29,10 +29,6 @@
         "maxLength": 60,
         "format": "email"
       },
-      "pfp": {
-        "type": "string",
-        "minLength": 0
-      },
       "isAdmin": {
         "type": "boolean"
       }

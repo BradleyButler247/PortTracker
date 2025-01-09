@@ -9,17 +9,17 @@ const DropdownAsset = ({ assetIDType, setAssetIDType }) => {
 
     return (
         <>
-            <Dropdown isOpen={dropdownOpen} toggle={toggle} direction='down' className='text-start py-0'>
-                <DropdownToggle caret color='dark' className='col-12 text-start ps-0'>                                        
-                    <label className="col-12 h5" htmlFor='asset'>
-                        {assetIDType}
+            <Dropdown isOpen={ dropdownOpen } toggle={ toggle } direction='down' className='text-start py-0'>
+                <DropdownToggle caret className='text-start ps-0' style={{ backgroundColor: '#2A2640', border: 'none' }}>                                        
+                    <label className="h5" htmlFor='asset'>
+                        { assetIDType }
                     </label>
                 </DropdownToggle>
                 <DropdownMenu dark>
                     {['Name', 'Symbol', 'Address'].map((item) => {
                         return (
-                            <DropdownItem key={uuid()} onClick={() => setAssetIDType(item)}>
-                                {item}
+                            <DropdownItem key={ uuid() } onClick={ () => setAssetIDType(item) }>
+                                { item }
                             </DropdownItem>
                         )
                     })}                   

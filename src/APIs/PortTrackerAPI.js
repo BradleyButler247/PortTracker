@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:6969";
 
 class PortTrackerAPI {
 
@@ -23,8 +23,11 @@ class PortTrackerAPI {
 //   // Individual API routes
 
   static async register(user) {
-    const res = await this.request(`auth/register`, user.user.info, 'post');
+    const userInfo = user.info;
+    const res = await this.request(`auth/register`, userInfo, 'post');
+
     PortTrackerAPI.token = res.token
+
     return res.token
   }
 
@@ -49,7 +52,6 @@ class PortTrackerAPI {
 
   static async editProfile(username, userInfo) {
       const res = await this.request(`users/${username}`, userInfo, 'patch')
-
       res.user.token = PortTrackerAPI.token
       return res.user
   }

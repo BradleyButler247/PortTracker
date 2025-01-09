@@ -32,14 +32,14 @@ const ProfileTradesForm = ({ orderType, addTrade }) => {
         }
 
         addTrade(data);
-        // setFormData(initialState)
+        setFormData(initialState)
     }
 
     return (
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={ handleSubmit }>
             <div className='mt-4 row'>
                 <div className='text-start col-4 d-flex'>
-                    <DropdownAsset assetIDType={assetIDType} setAssetIDType={setAssetIDType} />
+                    <DropdownAsset assetIDType={ assetIDType } setAssetIDType={ setAssetIDType } />
                 </div>
                 <div className='text-start col-4 d-flex align-items-center'>
                     <label className="col-12 h5" htmlFor='quantity'>
@@ -59,10 +59,10 @@ const ProfileTradesForm = ({ orderType, addTrade }) => {
                         required
                         type='text'
                         name='asset'
-                        placeholder={assetIDType}
+                        placeholder={ assetIDType }
                         className="col-12 input-lg"
-                        value={formData.asset || ''}
-                        onChange={handleChange}
+                        value={ formData.asset || '' }
+                        onChange={ handleChange }
                     />
                 </div>
                 <div className='col-4 d-flex'>
@@ -74,8 +74,8 @@ const ProfileTradesForm = ({ orderType, addTrade }) => {
                         name='quantity'
                         placeholder='0.000000'
                         className="col-12 input-lg"
-                        value={formData.quantity || ''}
-                        onChange={handleChange}
+                        value={ formData.quantity || '' }
+                        onChange={ handleChange }
                     />
                 </div>
                 <div className='col-4 d-flex'>
@@ -87,8 +87,8 @@ const ProfileTradesForm = ({ orderType, addTrade }) => {
                         name='price'
                         placeholder='0.00'
                         className="col-12 input-lg me-auto"
-                        value={formData.price || ''}
-                        onChange={handleChange}
+                        value={ formData.price || '' }
+                        onChange={ handleChange }
                     />
                 </div>
             </div>
