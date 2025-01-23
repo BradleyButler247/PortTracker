@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // REACT_APP_BASE_URL = https://port-tracker-54b8d78fe79a.herokuapp.com/
-const BASE_URL = process.env.REACT_APP_BASE_URL || "https://port-tracker-54b8d78fe79a.herokuapp.com";
-// const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:6969";
+// const BASE_URL = process.env.REACT_APP_BASE_URL || "https://port-tracker-54b8d78fe79a.herokuapp.com";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:6969";
 
 class PortTrackerAPI {
 
