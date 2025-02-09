@@ -6,6 +6,7 @@ require("colors");
 
 const SECRET_KEY = process.env.SECRET_KEY || "secret-dev";
 const PORT = process.env.PORT || 5432;
+const SERVER_PORT = process.env.SERVER_PORT || 5000;
 
 function getDatabaseUri() {
   return (process.env.NODE_ENV === "test")
@@ -25,6 +26,7 @@ console.log("---");
 module.exports = {
   SECRET_KEY,
   PORT,
+  SERVER_PORT,
   BCRYPT_WORK_FACTOR,
   getDatabaseUri
 };
